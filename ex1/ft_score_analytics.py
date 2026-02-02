@@ -4,13 +4,11 @@ argumente = sys.argv[1:]
 
 print("=== PixelMetrics 3000 - Score Cruncher ===\n")
 
-# Prüfe ob Argumente vorhanden sind
 if len(argumente) == 0:
-    print("❌ Keine Scores eingegeben!")
-    print("💡 Nutze:  python3 schritt4_stats.py 100 200 300")
+    print("❌ No scores entered!")
+    print("💡 Use:  python3 schritt4_stats.py 100 200 300")
     sys.exit()
 
-# Sammle gültige Scores
 scores = []
 for arg in argumente:
     try:
@@ -23,33 +21,33 @@ for arg in argumente:
         zahl = int(arg)
         scores.append(zahl)
     except ValueError:
-        print(f"⚠️  '{arg}' ignoriert (keine Zahl)")
+        print(f"⚠️  '{arg}' ignored (not a number)")
 
-# Prüfe ob gültige Scores vorhanden sind
+# Check if valid scores are present
 if len(scores) == 0:
-    print("❌ Keine gültigen Scores gefunden!")
+    print("❌ No valid scores found!")
     sys.exit()
 
-# Berechne Statistiken
-anzahl = len(scores)
-hoechster_score = max(scores)
-niedrigster_score = min(scores)
-summe = sum(scores)
-durchschnitt = summe / anzahl
-low_scores = [s for s in scores if s < durchschnitt]
-high_scores = [s for s in scores if s >= durchschnitt]
-score_range = hoechster_score - niedrigster_score
+# Calculate statistics
+count = len(scores)
+highest_score = max(scores)
+lowest_score = min(scores)
+total_sum = sum(scores)
+average = total_sum / count
+low_scores = [s for s in scores if s < average]
+high_scores = [s for s in scores if s >= average]
+score_range = highest_score - lowest_score
 
-# Ausgabe
-print("\n📊 STATISTIKEN")
+# Output results
+print("\n📊 STATISTICS")
 print("=" * 40)
-print(f"Anzahl Scores:       {anzahl}")
-print(f"Höchster Score:     {hoechster_score} 🏆")
-print(f"Niedrigster Score:  {niedrigster_score}")
-print(f"Gesamtsumme:        {summe}")
-print(f"Durchschnitt:       {durchschnitt:.2f}")
+print(f"Number of Scores:       {count}")
+print(f"Highest Score:     {highest_score} 🏆")
+print(f"Lowest Score:  {lowest_score}")
+print(f"Total Sum:        {total_sum}")
+print(f"Average:       {average:.2f}")
 print(f"Score Range:        {score_range}")
 print(f"Low Scores: {len(low_scores)}")
 print(f"High Scores: {len(high_scores)}")
 print("=" * 40)
-print("\n✅ Analyse abgeschlossen. Viel Erfolg beim nächsten Mal!")
+print("\n✅ Analysis complete. Good luck next time!")
